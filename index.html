@@ -134,7 +134,7 @@ const E=[
 ];
 const $=s=>document.querySelector(s),N=n=>n.toLocaleString('ar-EG'),L=['أ','ب','ج','د'],esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 // ضع هنا رابط Google Apps Script بعد نشره (انظر الشرح)؛ إن تُرك فارغًا لن تُرسل النتائج.
-const ENDPOINT="https://script.google.com/macros/s/AKfycby6zFMAk5PIZB7PorfryQrnf4YWk32wlTIDOF5U9y9CeCB3EgPimBw6_9B_Wis44Qq-pA/exec",KEY='exam_done_nahw_u1u2';
+const ENDPOINT="https://script.google.com/macros/s/AKfycbxLOVSJsDAM6eVUsrdJ2rMsEZslS2F3guBm6GwyDCJXUn7Nt1-O99pjsT7OyQaWghT7Eg/exec",KEY='exam_done_nahw_u1u2';
 // تصحيح تقريبي للمقالي: لكل سؤال مجموعات كلمات، ويكفي أن يذكر الطالب كلمة من كل مجموعة ("=" تعني الكلمة بالضبط)
 const K=[[["سيف"],["رمح"],["قرطاس"],["قلم"],["جامد","غير مشتق"]],[["مبالغ"],["=اله","=الاله"]],[["=راد"]],[["=حاكم"]],[["فاعل"],["مبتد"]],[["فاعل"],["مبتد"]],[["متسلم"]],[["اوطانهم"]]];
 const norm=s=>(s||'').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[^\u0621-\u064Aa-z0-9\s]/gi,' ').replace(/\s+/g,' ').trim();
