@@ -164,10 +164,10 @@ $('#sub').onclick=()=>{const miss=Q.length-Object.keys(pick).length;
  if(miss&&!warned){warned=true;$('#wn').textContent=`لم تجب عن ${N(miss)} سؤالًا اختياريًا. اضغط مرة أخرى للتسليم أو أكمل إجاباتك.`;$('#wn').hidden=false;return}
  document.querySelectorAll('textarea').forEach(a=>ev[+a.id.slice(1)]=a.value.trim());
  const mc=Q.filter((x,i)=>pick[i]===x[3]).length,es=E.filter((x,k)=>gr(k)).length,sc=mc+es,T=Q.length+E.length,pc=Math.round(sc/T*100),g=pc>=90?'ممتاز':pc>=80?'جيد جدًا':pc>=65?'جيد':pc>=50?'مقبول':'يحتاج إلى مراجعة';
- $('#rb').innerHTML=`<div class="res"><p class="mu">${esc(name)}</p><div class="big">${N(sc)}<small> / ${N(T)}</small></div><p><b>${N(pc)}٪</b> · ${g}</p><p class="mu">الاختياري: ${N(mc)} / ${N(Q.length)} · المقالي: ${N(es)} / ${N(E.length)}<br>تصحيح المقالي تقريبي، والمعلم يراجع إجابتك.</p><label class="mu"><input type="checkbox" id="fl"> عرض الأسئلة الخاطئة والمتروكة فقط</label></div><div id="rv">${all(1)}</div>`;
+ $('#rb').innerHTML=`<div class="res"><p class="mu">${esc(name)}</p><div class="big">${N(sc)}<small> / ${N(T)}</small></div><p><b>${N(pc)}٪</b> · ${g}</p><p class="mu">الاختياري: ${N(mc)} / ${N(Q.length)} · المقالي: ${N(es)} / ${N(E.length)}<br>تصحيح المقالي تقريبي، والمعلم يراجع إجابتك.</p><p class="mu" id="st"></p><label class="mu"><input type="checkbox" id="fl"> عرض الأسئلة الخاطئة والمتروكة فقط</label></div><div id="rv">${all(1)}</div>`;
  $('#fl').onchange=e=>$('#rv').classList.toggle('hide',e.target.checked);show('r');
  try{localStorage.setItem(KEY,'1')}catch(e){}
- if(ENDPOINT){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:name,score:sc,total:T,percent:pc,essays:E.map((x,k)=>ev[Q.length+k]||'').join(' || '),time:new Date().toISOString()})})}catch(e){}}};
+ if(ENDPOINT){const st=$('#st'),f=()=>st.textContent='تعذّر إرسال النتيجة؛ التقط صورة لهذه الشاشة وأرسلها للمعلم.';st.textContent='جارٍ إرسال نتيجتك…';try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:name,score:sc,total:T,percent:pc,essays:E.map((x,k)=>ev[Q.length+k]||'').join(' || '),time:new Date().toISOString()})}).then(()=>st.textContent='تم إرسال نتيجتك إلى المعلم ✓').catch(f)}catch(e){f()}}};
 </script>
 </body>
 </html>
